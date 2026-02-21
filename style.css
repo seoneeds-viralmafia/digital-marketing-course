@@ -1,184 +1,158 @@
-/* ---------- Base ---------- */
+
 :root{
-  --bg1:#0ea5e9;
-  --bg2:#8b5cf6;
-  --card:#ffffffcc;
-  --text:#0f172a;
-  --muted:#334155;
-  --line:#e2e8f0;
-  --shadow: 0 18px 45px rgba(2, 6, 23, 0.18);
+  --pastel-blue: #eaf4ff;
+  --soft-blue: #cfe8ff;
+  --accent-blue: #4f8ef7;
+  --text-dark: #1e293b;
+  --text-light: #475569;
+  --white: #ffffff;
+  --shadow: 0 15px 35px rgba(79, 142, 247, 0.15);
   --radius: 18px;
 }
 
-*{ box-sizing:border-box; }
-
+/* ---------- Body ---------- */
 body{
   margin:0;
-  font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
-  color: var(--text);
-  line-height: 1.85;
-  background:
-    radial-gradient(1200px 600px at 10% 10%, rgba(255,255,255,0.25), transparent 60%),
-    radial-gradient(900px 500px at 90% 20%, rgba(255,255,255,0.18), transparent 55%),
-    linear-gradient(135deg, var(--bg1), var(--bg2));
-  min-height: 100vh;
-  padding: 48px 16px;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+  background-color: var(--pastel-blue);
+  color: var(--text-dark);
+  line-height: 1.8;
+  padding: 50px 15px;
+  position: relative;
+  overflow-x: hidden;
 }
 
-/* Soft pattern overlay */
+/* Decorative Floating Circles */
+body::before,
+body::after{
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  z-index: 0;
+}
+
 body::before{
-  content:"";
-  position: fixed;
-  inset:0;
-  pointer-events:none;
-  opacity: 0.25;
-  background-image:
-    radial-gradient(circle at 1px 1px, rgba(255,255,255,0.22) 1px, transparent 1px);
-  background-size: 26px 26px;
+  width: 350px;
+  height: 350px;
+  background: var(--soft-blue);
+  top: -100px;
+  left: -120px;
+  opacity: 0.5;
+}
+
+body::after{
+  width: 250px;
+  height: 250px;
+  background: #dbeafe;
+  bottom: -80px;
+  right: -100px;
+  opacity: 0.6;
 }
 
 /* ---------- Container Card ---------- */
 .container{
   max-width: 900px;
-  margin: 0 auto;
-  background: var(--card);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255,255,255,0.35);
+  margin: auto;
+  background: var(--white);
+  padding: 45px;
   border-radius: var(--radius);
   box-shadow: var(--shadow);
-  padding: 44px 42px;
-  position: relative;
-  overflow: hidden;
-}
-
-/* Decorative blobs */
-.container::before,
-.container::after{
-  content:"";
-  position:absolute;
-  width: 280px;
-  height: 280px;
-  border-radius: 50%;
-  filter: blur(18px);
-  opacity: .35;
-  z-index: 0;
-}
-
-.container::before{
-  background: #22c55e;
-  top: -120px;
-  right: -120px;
-}
-
-.container::after{
-  background: #f59e0b;
-  bottom: -140px;
-  left: -140px;
-}
-
-.container > *{
   position: relative;
   z-index: 1;
 }
 
 /* ---------- Typography ---------- */
 h1{
-  font-size: clamp(28px, 3.2vw, 40px);
-  line-height: 1.18;
-  margin: 0 0 14px;
-  letter-spacing: -0.02em;
+  font-size: 32px;
+  margin-bottom: 15px;
+  color: var(--text-dark);
 }
 
 .intro{
   font-size: 18px;
-  color: var(--muted);
-  margin: 0 0 22px;
-  padding: 16px 18px;
-  border: 1px solid var(--line);
-  background: rgba(255,255,255,0.7);
-  border-radius: 14px;
+  background: #f1f8ff;
+  padding: 18px;
+  border-left: 5px solid var(--accent-blue);
+  border-radius: 12px;
+  margin-bottom: 25px;
+  color: var(--text-light);
 }
 
-/* Section headings with a gradient underline */
 h2{
-  font-size: 22px;
-  margin-top: 34px;
-  margin-bottom: 10px;
-  letter-spacing: -0.01em;
-  display: inline-block;
-  padding-bottom: 8px;
-  border-bottom: 3px solid transparent;
-  border-image: linear-gradient(90deg, #0ea5e9, #8b5cf6) 1;
+  margin-top: 35px;
+  margin-bottom: 12px;
+  color: var(--accent-blue);
+  position: relative;
+  padding-bottom: 6px;
 }
 
-/* ---------- Links (nice chip style) ---------- */
+h2::after{
+  content: "";
+  width: 50px;
+  height: 3px;
+  background: var(--accent-blue);
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  border-radius: 3px;
+}
+
+/* ---------- Paragraph ---------- */
+p{
+  color: var(--text-light);
+  margin-bottom: 15px;
+}
+
+/* ---------- Links ---------- */
 a{
-  color: #0b63f6;
-  font-weight: 700;
+  color: var(--accent-blue);
+  font-weight: 600;
   text-decoration: none;
-  background: rgba(11, 99, 246, 0.08);
-  padding: 2px 10px;
-  border-radius: 999px;
-  border: 1px solid rgba(11, 99, 246, 0.22);
-  transition: transform .15s ease, background .15s ease, box-shadow .15s ease;
-  white-space: nowrap;
+  transition: 0.3s ease;
 }
 
 a:hover{
-  background: rgba(11, 99, 246, 0.14);
-  box-shadow: 0 10px 20px rgba(11, 99, 246, 0.15);
-  transform: translateY(-1px);
+  text-decoration: underline;
+  opacity: 0.8;
 }
 
-a:active{
-  transform: translateY(0);
-}
-
-/* ---------- Lists (modern check bullets) ---------- */
+/* ---------- List Design ---------- */
 ul{
   list-style: none;
   padding: 0;
-  margin: 14px 0 22px;
-  display: grid;
-  gap: 10px;
+  margin: 15px 0 25px;
 }
 
 li{
-  padding: 12px 14px 12px 44px;
-  border: 1px solid var(--line);
-  background: rgba(255,255,255,0.72);
-  border-radius: 14px;
+  padding: 12px 15px 12px 40px;
+  margin-bottom: 10px;
+  background: #f7fbff;
+  border-radius: 12px;
   position: relative;
-  color: var(--muted);
+  color: var(--text-light);
+  border: 1px solid #e0f0ff;
 }
 
 li::before{
-  content: "✓";
+  content: "●";
   position: absolute;
-  left: 14px;
+  left: 15px;
   top: 10px;
-  width: 22px;
-  height: 22px;
-  display: grid;
-  place-items: center;
-  border-radius: 8px;
-  font-weight: 900;
-  color: white;
-  background: linear-gradient(135deg, #22c55e, #0ea5e9);
-  box-shadow: 0 10px 18px rgba(14,165,233,0.20);
+  font-size: 18px;
+  color: var(--accent-blue);
 }
 
-/* ---------- Paragraph spacing ---------- */
-p{
-  margin: 0 0 14px;
-  color: var(--muted);
-}
+/* ---------- Responsive ---------- */
+@media (max-width: 768px){
+  .container{
+    padding: 25px;
+  }
 
-/* ---------- Mobile tweaks ---------- */
-@media (max-width: 680px){
-  body{ padding: 28px 12px; }
-  .container{ padding: 28px 18px; }
-  .intro{ font-size: 16.5px; }
-  li{ padding-left: 42px; }
+  h1{
+    font-size: 24px;
+  }
+
+  .intro{
+    font-size: 16px;
+  }
 }
